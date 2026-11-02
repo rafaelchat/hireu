@@ -70,3 +70,11 @@ A pesquisa ampla em plataformas de carreira, ATSs, comunidades, fontes de acessi
 A nova superfície usa `client/src/pages/CandidateFlow.tsx` para onboarding e telas do candidato, `ProductLayout.tsx` para a navegação persistente e `index.css` para estados, cards, timeline, agenda, documentos e responsividade. O Supabase permanece provisionado, mas não é chamado nesta fase; as interações usam dados locais, toasts e estados React. O painel founder/empresa não será expandido até o fluxo de candidato ser revisado.
 
 A direção visual mantém a editorial tech brasileira, mas o workspace ganha densidade operacional: sidebar por tarefas, próximo passo em destaque, timelines com fonte/data, privacy by default, explicações de match e ações reversíveis.
+
+## Fase atual — monetização e workspace da empresa
+
+O modelo comercial foi atualizado para vender Discovery gratuito, convites qualificados por créditos, Full Workspace e custom enterprise. A identidade do candidato permanece protegida: a empresa vê um perfil anônimo e explicável, reserva um Interview Credit para enviar um convite e só deve consumir o crédito após uma conversa concluída. Recusa, falta de resposta, no-show do candidato e falha da plataforma retornam o crédito automaticamente.
+
+A implementação mock vive em `client/src/pages/CompanyFlow.tsx`, com pricing atualizado em `ProductPages.tsx`, navegação de empresa em `ProductLayout.tsx` e estados visuais em `index.css`. O fluxo cobre descoberta, invite, agenda, sala, ledger, reembolso e automações. A conexão com Google Workspace é representada como uma autorização futura para Calendar, Meet e Gmail; nenhuma mensagem externa ou chamada real é feita nesta fase.
+
+A automação é deliberadamente limitada: agentes podem sugerir horários, criar lembretes, acompanhar resposta, proteger reembolsos e resumir notas/transcripts consentidos; não podem rejeitar candidatos, revelar identidade sem consentimento ou decidir contratação.

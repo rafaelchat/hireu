@@ -14,6 +14,7 @@ import {
   LockKeyhole,
   Mail,
   Plus,
+  RefreshCw,
   Search,
   Send,
   ShieldCheck,
@@ -579,43 +580,65 @@ export function PricingPage() {
       <div className="public-content">
         <PageHeader
           eyebrow="For companies"
-          title="Pay for a better process, not more noise."
-          copy="Choose the amount of structure your team needs. Every plan starts with a clear job brief."
+          title="Pay for the conversation, not the contact."
+          copy="Explore anonymous profiles, invite the right people and let HireU handle the handoffs. Credits come back when a candidate does not respond or attend."
         />
+        <div className="pricing-principles">
+          <span>
+            <ShieldCheck size={15} /> Candidate identity stays protected
+          </span>
+          <span>
+            <RefreshCw size={15} /> Outcome-based credit refunds
+          </span>
+          <span>
+            <Bot size={15} /> Agents handle scheduling and reminders
+          </span>
+        </div>
         <div className="pricing-grid">
           {[
             {
-              name: "Starter",
-              price: "$49",
-              copy: "For one focused search.",
+              name: "Discovery",
+              price: "Free",
+              copy: "Browse signal before you commit.",
               features: [
-                "1 active role",
-                "Structured job brief",
-                "Candidate workspace",
-                "Basic AI matching",
+                "Anonymous candidate profiles",
+                "Explainable AI matching",
+                "Shortlists and saved searches",
+                "Salary, location and availability context",
               ],
             },
             {
-              name: "Growth",
-              price: "$149",
-              copy: "For teams hiring regularly.",
+              name: "Interview Credits",
+              price: "$59",
+              copy: "For five qualified invitations.",
               features: [
-                "5 active roles",
-                "Assessments & scorecards",
-                "Team collaboration",
-                "Priority matching",
+                "5 interview credits",
+                "Structured candidate invite",
+                "Scheduling and reminders",
+                "Automatic refund protection",
               ],
               featured: true,
             },
             {
-              name: "Scale",
-              price: "Custom",
+              name: "Full Workspace",
+              price: "$249",
+              copy: "For teams hiring every month.",
+              features: [
+                "Advanced talent search",
+                "25 qualified interviews / month",
+                "Calendar, rooms and transcripts",
+                "Automation and hiring analytics",
+              ],
+            },
+            {
+              name: "Custom",
+              price: "Let’s talk",
               copy: "For a repeatable talent engine.",
               features: [
-                "Unlimited roles",
-                "ATS ingestion",
-                "Hiring analytics",
-                "Dedicated support",
+                "ATS ingestion and custom workflows",
+                "Volume and dedicated support",
+                "Google Workspace rollout",
+                "Custom compliance and retention",
               ],
             },
           ].map(plan => (
@@ -638,14 +661,24 @@ export function PricingPage() {
                 ))}
               </div>
               <Link
-                href="/auth?mode=company"
+                href={
+                  plan.name === "Discovery"
+                    ? "/company/candidates"
+                    : plan.name === "Custom"
+                      ? "/auth?mode=company"
+                      : "/company/billing"
+                }
                 className={
                   plan.featured
                     ? "product-dark-button full"
                     : "product-outline-button full"
                 }
               >
-                Choose {plan.name}
+                {plan.name === "Discovery"
+                  ? "Explore talent"
+                  : plan.name === "Custom"
+                    ? "Talk to HireU"
+                    : `Choose ${plan.name}`}
               </Link>
             </div>
           ))}

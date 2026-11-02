@@ -30,4 +30,15 @@
 - Documentos devem separar biblioteca privada global e versões enviadas por candidatura; recomendações devem explicar sinais usados e permitir dispensar.
 - Privacidade deve oferecer visibilidade privada por padrão, descoberta por empresas verificadas, consentimento separado para talent pool e controle de exportação/exclusão.
 - Mensagens, agenda, estados vazios e feedback devem funcionar sem Supabase, usando mock data honesto e toasts de estado local.
-- O painel do founder/empresa não faz parte desta etapa e permanece como próxima entrega.
+- O painel do founder/empresa deve permanecer separado do HireABrazilian e usar mock data nesta fase, sem chamadas ao Supabase.
+
+## Monetização e operações da empresa — mock mode
+
+- A página comercial deve apresentar Discovery gratuito, Interview Credits, Full Workspace e Custom, substituindo o modelo genérico anterior.
+- A empresa deve visualizar perfis anônimos com cargo, localização aproximada, experiência, faixa salarial, disponibilidade, competências e razões explicáveis do match.
+- O contato pessoal não deve ser vendido diretamente; o produto deve vender um convite estruturado para entrevista, com consentimento do candidato antes da revelação de identidade.
+- Um convite deve reservar um crédito e mostrar regras de proteção: ausência de resposta, recusa, no-show do candidato ou falha da plataforma devolvem o crédito automaticamente.
+- O workspace deve ter Overview, Discover talent, Interviews, Credits & billing, Automations, Post a job e Company settings.
+- O fluxo mock deve representar agendamento, sala, Google Meet, gravação desligada por padrão, transcrição condicionada a consentimento, resumo por IA, ledger de créditos e reembolsos.
+- A empresa deve poder ativar agentes de agendamento, follow-up, refund guard e resumo de entrevista, sem permitir que agentes rejeitem candidatos, revelem identidade sem consentimento ou tomem decisões de contratação.
+- A integração Google Workspace deve ser apresentada como conexão futura/autorizável para Calendar, Meet e Gmail; não deve enviar mensagens externas nesta etapa mock.

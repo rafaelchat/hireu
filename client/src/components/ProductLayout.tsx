@@ -1,11 +1,13 @@
 import { Link, useLocation } from "wouter";
 import {
   Bell,
+  Bot,
   BriefcaseBusiness,
   CalendarDays,
   ChevronDown,
   Command,
   FileText,
+  CreditCard,
   LayoutDashboard,
   LogOut,
   LockKeyhole,
@@ -75,8 +77,11 @@ const candidateLinks = [
 ] as const;
 const companyLinks = [
   ["/company", "Overview", LayoutDashboard],
+  ["/company/candidates", "Discover talent", UserRound],
+  ["/company/interviews", "Interviews", CalendarDays],
+  ["/company/billing", "Credits & billing", CreditCard],
+  ["/company/automations", "Automations", Bot],
   ["/company/jobs/new", "Post a job", BriefcaseBusiness],
-  ["/company/candidates", "Candidates", UserRound],
   ["/company/settings", "Company settings", Settings],
 ] as const;
 

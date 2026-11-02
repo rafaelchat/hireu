@@ -33,6 +33,13 @@ import {
   CandidateProfilePageV2,
   CandidateRecommendationsPage,
 } from "./pages/CandidateFlow";
+import {
+  CompanyAutomationsPage,
+  CompanyBillingPage,
+  CompanyCandidatesPageV2,
+  CompanyDashboardPage,
+  CompanyInterviewsPage,
+} from "./pages/CompanyFlow";
 
 function JobRoute() {
   const [, params] = useRoute("/jobs/:id");
@@ -78,9 +85,12 @@ function Router() {
         path="/candidate/settings"
         component={() => <SettingsPage kind="candidate" />}
       />
-      <Route path="/company" component={CompanyDashboard} />
+      <Route path="/company" component={CompanyDashboardPage} />
       <Route path="/company/jobs/new" component={CompanyPostJobPage} />
-      <Route path="/company/candidates" component={CompanyCandidatesPage} />
+      <Route path="/company/candidates" component={CompanyCandidatesPageV2} />
+      <Route path="/company/interviews" component={CompanyInterviewsPage} />
+      <Route path="/company/billing" component={CompanyBillingPage} />
+      <Route path="/company/automations" component={CompanyAutomationsPage} />
       <Route
         path="/company/settings"
         component={() => <SettingsPage kind="company" />}
