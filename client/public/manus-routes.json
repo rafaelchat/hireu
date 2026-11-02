@@ -32,7 +32,6 @@
     { "path": "/company/candidates", "title": "Discover talent — HireU" },
     { "path": "/company/interviews", "title": "Company interviews — HireU" },
     { "path": "/company/billing", "title": "Credits & billing — HireU" },
-    { "path": "/company/automations", "title": "Company automations — HireU" },
     { "path": "/company/jobs/new", "title": "Post a job — HireU" },
     { "path": "/company/settings", "title": "Company settings — HireU" }
   ]

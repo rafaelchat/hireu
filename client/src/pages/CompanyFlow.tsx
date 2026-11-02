@@ -9,7 +9,6 @@ import {
   Clock3,
   CreditCard,
   FileText,
-  Globe2,
   LockKeyhole,
   Mail,
   MessageCircle,
@@ -19,7 +18,6 @@ import {
   ShieldCheck,
   Sparkles,
   UserRound,
-  UsersRound,
   Video,
 } from "lucide-react";
 import { Link } from "wouter";
@@ -668,109 +666,6 @@ export function CompanyBillingPage() {
           <CompanyStatus tone="interview">+1 returned</CompanyStatus>
         </div>
       </section>
-    </AppShell>
-  );
-}
-
-export function CompanyAutomationsPage() {
-  const [enabled, setEnabled] = useState([true, true, true, false]);
-  const items = [
-    [
-      "Scheduling agent",
-      "Suggest slots, detect conflicts and create calendar events.",
-      CalendarDays,
-    ],
-    [
-      "Candidate follow-up agent",
-      "Send respectful reminders and close expired invites.",
-      MessageCircle,
-    ],
-    [
-      "Refund guard",
-      "Watch response, attendance and platform failures to return credits.",
-      ShieldCheck,
-    ],
-    [
-      "Interview summary agent",
-      "Draft summaries from approved notes or consented transcripts.",
-      Sparkles,
-    ],
-  ] as const;
-  return (
-    <AppShell kind="company">
-      <CompanyHeader
-        title="Automations"
-        copy="Let agents handle handoffs while your team stays accountable for decisions."
-        action={
-          <button
-            className="product-dark-button"
-            onClick={() =>
-              toast.success(
-                "Google Workspace connection requested in mock mode"
-              )
-            }
-          >
-            Connect Google Workspace <Globe2 size={15} />
-          </button>
-        }
-      />
-      <div className="automation-connect">
-        <div>
-          <p className="page-eyebrow">Google Workspace</p>
-          <h2>Calendar and Meet are ready to connect.</h2>
-          <p>
-            HireU can create events, provision rooms and send reminders after
-            you authorize the workspace. We do not send outreach without a
-            configured rule.
-          </p>
-        </div>
-        <span>
-          <CalendarDays size={18} /> Calendar
-        </span>
-        <span>
-          <Video size={18} /> Meet
-        </span>
-        <span>
-          <Mail size={18} /> Gmail
-        </span>
-      </div>
-      <div className="automation-list">
-        {items.map(([title, copy, Icon], index) => (
-          <article className="automation-card" key={title}>
-            <span className="automation-icon">
-              <Icon size={19} />
-            </span>
-            <span>
-              <strong>{title}</strong>
-              <small>{copy}</small>
-            </span>
-            <button
-              className={`toggle ${enabled[index] ? "on" : ""}`}
-              onClick={() =>
-                setEnabled(value =>
-                  value.map((current, itemIndex) =>
-                    itemIndex === index ? !current : current
-                  )
-                )
-              }
-              aria-label={`Toggle ${title}`}
-            >
-              <span />
-            </button>
-          </article>
-        ))}
-      </div>
-      <div className="agent-guard">
-        <ShieldCheck size={18} />
-        <span>
-          <strong>Human decisions stay human.</strong>
-          <small>
-            Agents can schedule, remind, summarize and refund. They cannot
-            reject candidates, reveal identity without consent or make a hiring
-            decision.
-          </small>
-        </span>
-      </div>
     </AppShell>
   );
 }

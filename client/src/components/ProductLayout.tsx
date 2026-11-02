@@ -1,7 +1,6 @@
 import { Link, useLocation } from "wouter";
 import {
   Bell,
-  Bot,
   BriefcaseBusiness,
   CalendarDays,
   ChevronDown,
@@ -84,7 +83,6 @@ const companyLinks = [
   ["/company/candidates", "discoverTalent", UserRound],
   ["/company/interviews", "interviews", CalendarDays],
   ["/company/billing", "creditsBilling", CreditCard],
-  ["/company/automations", "automations", Bot],
   ["/company/jobs/new", "postJob", BriefcaseBusiness],
   ["/company/settings", "companySettings", Settings],
 ] as const;

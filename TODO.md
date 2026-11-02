@@ -38,7 +38,7 @@
 - A empresa deve visualizar perfis anônimos com cargo, localização aproximada, experiência, faixa salarial, disponibilidade, competências e razões explicáveis do match.
 - O contato pessoal não deve ser vendido diretamente; o produto deve vender um convite estruturado para entrevista, com consentimento do candidato antes da revelação de identidade.
 - Um convite deve reservar um crédito e mostrar regras de proteção: ausência de resposta, recusa, no-show do candidato ou falha da plataforma devolvem o crédito automaticamente.
-- O workspace deve ter Overview, Discover talent, Interviews, Credits & billing, Automations, Post a job e Company settings.
+- O workspace deve ter Overview, Discover talent, Interviews, Credits & billing, Post a job e Company settings; não deve expor uma tela separada de automações nesta fase.
 - O fluxo mock deve representar agendamento, sala, Google Meet, gravação desligada por padrão, transcrição condicionada a consentimento, resumo por IA, ledger de créditos e reembolsos.
 - A empresa deve poder ativar agentes de agendamento, follow-up, refund guard e resumo de entrevista, sem permitir que agentes rejeitem candidatos, revelem identidade sem consentimento ou tomem decisões de contratação.
 - A integração Google Workspace deve ser apresentada como conexão futura/autorizável para Calendar, Meet e Gmail; não deve enviar mensagens externas nesta etapa mock.

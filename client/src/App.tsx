@@ -37,7 +37,6 @@ import {
   CandidateRecommendationsPage,
 } from "./pages/CandidateFlow";
 import {
-  CompanyAutomationsPage,
   CompanyBillingPage,
   CompanyCandidatesPageV2,
   CompanyDashboardPage,
@@ -186,7 +185,6 @@ function Router() {
         <Route path="/company/candidates" component={CompanyCandidatesPageV2} />
         <Route path="/company/interviews" component={CompanyInterviewsPage} />
         <Route path="/company/billing" component={CompanyBillingPage} />
-        <Route path="/company/automations" component={CompanyAutomationsPage} />
         <Route
           path="/company/settings"
           component={() => <SettingsPage kind="company" />}
