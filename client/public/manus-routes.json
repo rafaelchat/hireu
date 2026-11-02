@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "path": "/", "title": "HireU — contratação com mais sinal" },
+    { "path": "/vagas", "title": "Vagas verificadas — HireU" },
+    { "path": "/para-candidatos", "title": "Para candidatos — HireU" },
+    { "path": "/para-empresas", "title": "Para empresas — HireU" },
+    { "path": "/como-funciona", "title": "Como funciona — HireU" }
+  ]
+}
