@@ -13,7 +13,7 @@ Create a Supabase project through the Vercel Marketplace or the Supabase dashboa
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_PUBLISHABLE_KEY`
 
-The app detects these variables at runtime. Without them, authentication and persistence show honest mock-mode feedback instead of pretending to be connected. Server-only values such as `SUPABASE_SECRET_KEY` and `SUPABASE_DB_URL` must never be prefixed with `VITE_`.
+The Supabase project and variables are provisioned, but the current product intentionally runs in mock mode. The frontend does not call Supabase for authentication or persistence yet. When the integration phase starts, authentication and persistence can be enabled without changing the public screen architecture. Server-only values such as `SUPABASE_SECRET_KEY` and `SUPABASE_DB_URL` must never be prefixed with `VITE_`.
 
 ## Current screens
 

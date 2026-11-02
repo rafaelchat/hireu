@@ -39,7 +39,6 @@ import {
   suggestedJobs,
   type Job,
 } from "@/data/mock";
-import { isSupabaseConfigured, supabase } from "@/lib/supabase";
 
 function JobRow({ job, compact = false }: { job: Job; compact?: boolean }) {
   return (
@@ -701,19 +700,10 @@ export function AuthPage() {
         <form
           onSubmit={async e => {
             e.preventDefault();
-            if (supabase) {
-              await supabase.auth.signInWithOtp({ email });
-            }
-            toast.success(
-              isSupabaseConfigured
-                ? "Magic link sent"
-                : "Mock mode: welcome to HireU",
-              {
-                description: isSupabaseConfigured
-                  ? "Check your inbox to continue."
-                  : "Connect Supabase to enable real authentication.",
-              }
-            );
+            toast.success("Mock mode: welcome to HireU", {
+              description:
+                "Your workspace is ready locally. Supabase authentication will be enabled later.",
+            });
           }}
         >
           <label>
@@ -731,8 +721,8 @@ export function AuthPage() {
           </button>
         </form>
         <div className="auth-note">
-          <LockKeyhole size={14} /> Secure, passwordless sign in powered by
-          Supabase Auth.
+          <LockKeyhole size={14} /> Mock authentication is active for this
+          product review.
         </div>
       </div>
     </div>
