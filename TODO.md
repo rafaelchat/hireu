@@ -54,4 +54,4 @@
 
 - O site deve ter um seletor visível com bandeira para alternar entre English e Português (Brasil).
 - A escolha deve persistir no navegador e atualizar o idioma HTML da página.
-- Nesta primeira entrega, o seletor traduz a navegação global, cabeçalhos públicos, pricing, autenticação e chrome dos workspaces; a tradução detalhada dos textos operacionais seguirá por superfície.
+- O seletor deve traduzir todos os textos visíveis das telas públicas, onboarding, candidato, empresa, pricing, entrevistas, cobrança, automações, mensagens, estados e feedbacks.
