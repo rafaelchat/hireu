@@ -20,3 +20,8 @@ The app detects these variables at runtime. Without them, authentication and per
 Public: home, job search, job details, apply, how it works, pricing and sign in. Candidate: overview, applications, profile and settings. Company: overview, post a job, candidate review and settings.
 
 Real Stripe checkout, production email delivery, ATS ingestion and AI scoring should be enabled only after the Vercel/Supabase credentials and billing provider are configured.
+
+## Official references
+
+- Vercel Vite deployment and SPA rewrite guidance: https://vercel.com/docs/frameworks/frontend/vite
+- Supabase Vercel Marketplace integration, provisioning and environment variable sync: https://supabase.com/docs/guides/integrations/vercel-marketplace
