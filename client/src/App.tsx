@@ -1,7 +1,9 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch, useRoute } from "wouter";
+import { Check, ChevronUp } from "lucide-react";
+import { useState } from "react";
+import { Route, Switch, useLocation, useRoute } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import {
@@ -51,53 +53,132 @@ function ApplyRoute() {
   return <ApplyPage id={params?.id ?? "nuvem-product-designer"} />;
 }
 
+type DemoIdentity = "logged-out" | "candidate" | "company";
+
+function AutoLoginSwitcher() {
+  const [location, setLocation] = useLocation();
+  const [open, setOpen] = useState(false);
+  const active: DemoIdentity = location.startsWith("/candidate")
+    ? "candidate"
+    : location.startsWith("/company")
+      ? "company"
+      : "logged-out";
+  const labels: Record<DemoIdentity, string> = {
+    "logged-out": "Logged out",
+    candidate: "Candidate",
+    company: "Company",
+  };
+
+  const switchIdentity = (identity: DemoIdentity) => {
+    setOpen(false);
+    if (identity === "candidate") setLocation("/candidate");
+    else if (identity === "company") setLocation("/company");
+    else setLocation("/");
+  };
+
+  return (
+    <div className={`auto-login ${open ? "open" : ""}`}>
+      {open && (
+        <div className="auto-login-menu" role="menu">
+          <div className="auto-login-menu-heading">
+            <span>Auto login</span>
+            <small>Mock environment</small>
+          </div>
+          {(["logged-out", "candidate", "company"] as DemoIdentity[]).map(
+            identity => (
+              <button
+                key={identity}
+                className={active === identity ? "active" : ""}
+                onClick={() => switchIdentity(identity)}
+                role="menuitem"
+              >
+                <span className={`auto-login-avatar ${identity}`}>
+                  {identity === "logged-out"
+                    ? "○"
+                    : identity === "candidate"
+                      ? "AM"
+                      : "NL"}
+                </span>
+                <span>
+                  <strong>{labels[identity]}</strong>
+                  <small>
+                    {identity === "logged-out"
+                      ? "Public website"
+                      : identity === "candidate"
+                        ? "Ana Martins · candidate workspace"
+                        : "Nuvem Labs · company workspace"}
+                  </small>
+                </span>
+                {active === identity && <Check size={14} />}
+              </button>
+            )
+          )}
+        </div>
+      )}
+      <button
+        className="auto-login-trigger"
+        onClick={() => setOpen(value => !value)}
+        aria-expanded={open}
+        aria-label="Open auto login switcher"
+      >
+        <span className="auto-login-trigger-dot" />
+        <span>Auto login</span>
+        <ChevronUp size={14} className={open ? "rotated" : ""} />
+      </button>
+    </div>
+  );
+}
+
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={LandingPage} />
-      <Route path="/jobs" component={JobsPage} />
-      <Route path="/jobs/:id" component={JobRoute} />
-      <Route path="/apply/:id" component={ApplyRoute} />
-      <Route path="/how-it-works" component={HowItWorksPage} />
-      <Route path="/pricing" component={PricingPage} />
-      <Route path="/privacy" component={PrivacyPage} />
-      <Route path="/auth" component={AuthPage} />
-      <Route path="/onboarding" component={CandidateOnboardingPage} />
-      <Route path="/candidate" component={CandidateDashboardPage} />
-      <Route
-        path="/candidate/applications"
-        component={CandidateApplicationsPageV2}
-      />
-      <Route
-        path="/candidate/assessments"
-        component={CandidateAssessmentsPage}
-      />
-      <Route path="/candidate/calendar" component={CandidateCalendarPage} />
-      <Route path="/candidate/documents" component={CandidateDocumentsPage} />
-      <Route
-        path="/candidate/recommendations"
-        component={CandidateRecommendationsPage}
-      />
-      <Route path="/candidate/messages" component={CandidateMessagesPage} />
-      <Route path="/candidate/profile" component={CandidateProfilePageV2} />
-      <Route path="/candidate/privacy" component={CandidatePrivacyPage} />
-      <Route
-        path="/candidate/settings"
-        component={() => <SettingsPage kind="candidate" />}
-      />
-      <Route path="/company" component={CompanyDashboardPage} />
-      <Route path="/company/jobs/new" component={CompanyPostJobPage} />
-      <Route path="/company/candidates" component={CompanyCandidatesPageV2} />
-      <Route path="/company/interviews" component={CompanyInterviewsPage} />
-      <Route path="/company/billing" component={CompanyBillingPage} />
-      <Route path="/company/automations" component={CompanyAutomationsPage} />
-      <Route
-        path="/company/settings"
-        component={() => <SettingsPage kind="company" />}
-      />
-      <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <Switch>
+        <Route path="/" component={LandingPage} />
+        <Route path="/jobs" component={JobsPage} />
+        <Route path="/jobs/:id" component={JobRoute} />
+        <Route path="/apply/:id" component={ApplyRoute} />
+        <Route path="/how-it-works" component={HowItWorksPage} />
+        <Route path="/pricing" component={PricingPage} />
+        <Route path="/privacy" component={PrivacyPage} />
+        <Route path="/auth" component={AuthPage} />
+        <Route path="/onboarding" component={CandidateOnboardingPage} />
+        <Route path="/candidate" component={CandidateDashboardPage} />
+        <Route
+          path="/candidate/applications"
+          component={CandidateApplicationsPageV2}
+        />
+        <Route
+          path="/candidate/assessments"
+          component={CandidateAssessmentsPage}
+        />
+        <Route path="/candidate/calendar" component={CandidateCalendarPage} />
+        <Route path="/candidate/documents" component={CandidateDocumentsPage} />
+        <Route
+          path="/candidate/recommendations"
+          component={CandidateRecommendationsPage}
+        />
+        <Route path="/candidate/messages" component={CandidateMessagesPage} />
+        <Route path="/candidate/profile" component={CandidateProfilePageV2} />
+        <Route path="/candidate/privacy" component={CandidatePrivacyPage} />
+        <Route
+          path="/candidate/settings"
+          component={() => <SettingsPage kind="candidate" />}
+        />
+        <Route path="/company" component={CompanyDashboardPage} />
+        <Route path="/company/jobs/new" component={CompanyPostJobPage} />
+        <Route path="/company/candidates" component={CompanyCandidatesPageV2} />
+        <Route path="/company/interviews" component={CompanyInterviewsPage} />
+        <Route path="/company/billing" component={CompanyBillingPage} />
+        <Route path="/company/automations" component={CompanyAutomationsPage} />
+        <Route
+          path="/company/settings"
+          component={() => <SettingsPage kind="company" />}
+        />
+        <Route path="/404" component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+      <AutoLoginSwitcher />
+    </>
   );
 }
 

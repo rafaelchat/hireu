@@ -5257,3 +5257,132 @@
     justify-content: center;
   }
 }
+
+/* Mock identity switcher */
+.auto-login {
+  position: fixed;
+  right: 22px;
+  bottom: 20px;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  font-family: "DM Sans", sans-serif;
+}
+.auto-login-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--foreground) 22%, transparent);
+  border-radius: 3px;
+  background: var(--foreground);
+  color: var(--background);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.auto-login-trigger:hover {
+  transform: translateY(-1px);
+}
+.auto-login-trigger-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lime) 19%, transparent);
+}
+.auto-login-trigger svg {
+  transition: transform 0.2s ease;
+}
+.auto-login-trigger svg.rotated {
+  transform: rotate(180deg);
+}
+.auto-login-menu {
+  width: 280px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+.auto-login-menu-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 9px 10px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.auto-login-menu-heading span {
+  color: var(--foreground);
+  font-size: 11px;
+  font-weight: 800;
+}
+.auto-login-menu-heading small {
+  color: var(--muted-foreground);
+  font-size: 9px;
+}
+.auto-login-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 3px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--foreground);
+  text-align: left;
+  cursor: pointer;
+}
+.auto-login-menu button:hover,
+.auto-login-menu button.active {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+}
+.auto-login-menu button > span:nth-child(2) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+.auto-login-menu button strong {
+  font-size: 11px;
+}
+.auto-login-menu button small {
+  color: var(--muted-foreground);
+  font-size: 9px;
+}
+.auto-login-menu button > svg {
+  color: var(--primary);
+}
+.auto-login-avatar {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  font-size: 9px;
+  font-weight: 800;
+}
+.auto-login-avatar.candidate {
+  background: var(--primary);
+  color: #fff;
+}
+.auto-login-avatar.company {
+  background: #2f7c68;
+  color: #fff;
+}
+@media (max-width: 620px) {
+  .auto-login {
+    right: 12px;
+    bottom: 12px;
+  }
+  .auto-login-menu {
+    width: min(280px, calc(100vw - 24px));
+  }
+}

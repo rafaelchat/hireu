@@ -42,3 +42,10 @@
 - O fluxo mock deve representar agendamento, sala, Google Meet, gravação desligada por padrão, transcrição condicionada a consentimento, resumo por IA, ledger de créditos e reembolsos.
 - A empresa deve poder ativar agentes de agendamento, follow-up, refund guard e resumo de entrevista, sem permitir que agentes rejeitem candidatos, revelem identidade sem consentimento ou tomem decisões de contratação.
 - A integração Google Workspace deve ser apresentada como conexão futura/autorizável para Calendar, Meet e Gmail; não deve enviar mensagens externas nesta etapa mock.
+
+## Ambiente de demonstração — auto login
+
+- Deve existir um botão fixo no canto inferior direito chamado “Auto login”.
+- O menu deve alternar entre “Logged out” com site público, “Candidate” com o workspace mock de Ana Martins e “Company” com o workspace mock da Nuvem Labs.
+- A troca deve navegar diretamente para a visão correspondente sem exigir autenticação real durante a fase de mock data.
+- O controle deve ser claramente identificado como ambiente mock para não ser confundido com autenticação de produção.
