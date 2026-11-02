@@ -1,9 +1,20 @@
 {
   "routes": [
-    { "path": "/", "title": "HireU — contratação com mais sinal" },
-    { "path": "/vagas", "title": "Vagas verificadas — HireU" },
-    { "path": "/para-candidatos", "title": "Para candidatos — HireU" },
-    { "path": "/para-empresas", "title": "Para empresas — HireU" },
-    { "path": "/como-funciona", "title": "Como funciona — HireU" }
+    { "path": "/", "title": "HireU — Find work with more signal" },
+    { "path": "/jobs", "title": "Explore jobs — HireU" },
+    { "path": "/jobs/:id", "title": "Job details — HireU" },
+    { "path": "/apply/:id", "title": "Apply — HireU" },
+    { "path": "/how-it-works", "title": "How HireU works" },
+    { "path": "/pricing", "title": "Company plans — HireU" },
+    { "path": "/privacy", "title": "Trust & privacy — HireU" },
+    { "path": "/auth", "title": "Sign in — HireU" },
+    { "path": "/candidate", "title": "Candidate workspace — HireU" },
+    { "path": "/candidate/applications", "title": "Applications — HireU" },
+    { "path": "/candidate/profile", "title": "Candidate profile — HireU" },
+    { "path": "/candidate/settings", "title": "Candidate settings — HireU" },
+    { "path": "/company", "title": "Company workspace — HireU" },
+    { "path": "/company/jobs/new", "title": "Post a job — HireU" },
+    { "path": "/company/candidates", "title": "Candidate review — HireU" },
+    { "path": "/company/settings", "title": "Company settings — HireU" }
   ]
 }
