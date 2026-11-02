@@ -21,6 +21,18 @@ import {
   PrivacyPage,
   SettingsPage,
 } from "./pages/ProductPages";
+import {
+  CandidateApplicationsPageV2,
+  CandidateAssessmentsPage,
+  CandidateCalendarPage,
+  CandidateDashboardPage,
+  CandidateDocumentsPage,
+  CandidateMessagesPage,
+  CandidateOnboardingPage,
+  CandidatePrivacyPage,
+  CandidateProfilePageV2,
+  CandidateRecommendationsPage,
+} from "./pages/CandidateFlow";
 
 function JobRoute() {
   const [, params] = useRoute("/jobs/:id");
@@ -43,12 +55,25 @@ function Router() {
       <Route path="/pricing" component={PricingPage} />
       <Route path="/privacy" component={PrivacyPage} />
       <Route path="/auth" component={AuthPage} />
-      <Route path="/candidate" component={CandidateDashboard} />
+      <Route path="/onboarding" component={CandidateOnboardingPage} />
+      <Route path="/candidate" component={CandidateDashboardPage} />
       <Route
         path="/candidate/applications"
-        component={CandidateApplicationsPage}
+        component={CandidateApplicationsPageV2}
       />
-      <Route path="/candidate/profile" component={CandidateProfilePage} />
+      <Route
+        path="/candidate/assessments"
+        component={CandidateAssessmentsPage}
+      />
+      <Route path="/candidate/calendar" component={CandidateCalendarPage} />
+      <Route path="/candidate/documents" component={CandidateDocumentsPage} />
+      <Route
+        path="/candidate/recommendations"
+        component={CandidateRecommendationsPage}
+      />
+      <Route path="/candidate/messages" component={CandidateMessagesPage} />
+      <Route path="/candidate/profile" component={CandidateProfilePageV2} />
+      <Route path="/candidate/privacy" component={CandidatePrivacyPage} />
       <Route
         path="/candidate/settings"
         component={() => <SettingsPage kind="candidate" />}

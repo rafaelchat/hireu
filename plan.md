@@ -62,3 +62,11 @@ Criar a primeira experiência pública do HireU, separada do HireABrazilian, com
 3. Adicionar testes de habilidade, matching explicável e triagem assistida por IA.
 4. Implementar publicação paga, Stripe, moderação anti-golpe, ingestão de ATS e alertas.
 5. Construir dashboards de candidato e empresa, auditoria, LGPD e páginas SEO de salários somente com dados confiáveis.
+
+## Fase atual — candidato antes do founder
+
+A pesquisa ampla em plataformas de carreira, ATSs, comunidades, fontes de acessibilidade, segurança e no HireABrazilian confirmou que o primeiro produto deve reduzir esforço sem sacrificar controle. O fluxo implementado em mock mode começa com onboarding progressivo, importa currículo com revisão explícita, permite perfil reutilizável e preferências, oferece avaliação opcional acessível, confirma o envio e organiza o pós-candidatura em um workspace factual.
+
+A nova superfície usa `client/src/pages/CandidateFlow.tsx` para onboarding e telas do candidato, `ProductLayout.tsx` para a navegação persistente e `index.css` para estados, cards, timeline, agenda, documentos e responsividade. O Supabase permanece provisionado, mas não é chamado nesta fase; as interações usam dados locais, toasts e estados React. O painel founder/empresa não será expandido até o fluxo de candidato ser revisado.
+
+A direção visual mantém a editorial tech brasileira, mas o workspace ganha densidade operacional: sidebar por tarefas, próximo passo em destaque, timelines com fonte/data, privacy by default, explicações de match e ações reversíveis.

@@ -17,3 +17,17 @@
 - O servidor e o banco gerenciado devem permanecer habilitados para receber autenticação, perfis, vagas, aplicações, testes, cobrança e automações.
 - O manifesto de rotas deve declarar as rotas públicas atuais e as rotas principais previstas sem incluir APIs ou assets.
 - Diagnósticos TypeScript devem permanecer registrados no ambiente Sandbox.
+
+## Fluxo completo e painel do candidato — mock mode
+
+- O cadastro de candidato deve começar com uma entrada curta e progressiva: nome, e-mail, localização e foco profissional, sem exigir dados sensíveis, carta de apresentação ou senha antes do primeiro passo.
+- O onboarding deve ter etapas visíveis para dados básicos, currículo, experiência, preferências, avaliação opcional e revisão final, com progresso salvo localmente e possibilidade de voltar/editar.
+- O currículo PDF/DOCX deve ser representado como importação revisável: arquivo original preservado, campos editáveis, confiança explícita e fallback manual sem bloquear o candidato.
+- O perfil deve representar headline, resumo, competências, idiomas, portfólio, localização, fuso, janela de colaboração, preferência contratual, expectativa e visibilidade.
+- O candidato deve ter um painel real com Overview, Applications, Assessments, Calendar, Documents, Recommendations, Messages, Profile e Privacy & control.
+- Cada candidatura deve exibir status factual, timeline, próximo passo, data/fonte da atualização, documentos enviados e opção de retirar; estados de agendamento devem distinguir solicitado, escolha de horário e confirmado.
+- Avaliações mock devem mostrar competência, duração, teto, formato, acessibilidade, suporte, retomada, reteste e feedback por competência, sem câmera, monitoramento ou personality scoring.
+- Documentos devem separar biblioteca privada global e versões enviadas por candidatura; recomendações devem explicar sinais usados e permitir dispensar.
+- Privacidade deve oferecer visibilidade privada por padrão, descoberta por empresas verificadas, consentimento separado para talent pool e controle de exportação/exclusão.
+- Mensagens, agenda, estados vazios e feedback devem funcionar sem Supabase, usando mock data honesto e toasts de estado local.
+- O painel do founder/empresa não faz parte desta etapa e permanece como próxima entrega.

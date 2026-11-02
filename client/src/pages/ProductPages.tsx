@@ -664,6 +664,7 @@ export function AuthPage() {
       : "candidate";
   const [mode, setMode] = useState<"candidate" | "company">(initialMode);
   const [email, setEmail] = useState("");
+  const [, setLocation] = useLocation();
   return (
     <div className="auth-page">
       <div className="auth-brand">
@@ -704,6 +705,7 @@ export function AuthPage() {
               description:
                 "Your workspace is ready locally. Supabase authentication will be enabled later.",
             });
+            setLocation(mode === "candidate" ? "/onboarding" : "/company");
           }}
         >
           <label>

@@ -5,16 +5,32 @@
     { "path": "/jobs/:id", "title": "Job details — HireU" },
     { "path": "/apply/:id", "title": "Apply — HireU" },
     { "path": "/how-it-works", "title": "How HireU works" },
-    { "path": "/pricing", "title": "Company plans — HireU" },
-    { "path": "/privacy", "title": "Trust & privacy — HireU" },
+    { "path": "/pricing", "title": "For companies — HireU" },
+    { "path": "/privacy", "title": "Privacy & trust — HireU" },
     { "path": "/auth", "title": "Sign in — HireU" },
-    { "path": "/candidate", "title": "Candidate workspace — HireU" },
-    { "path": "/candidate/applications", "title": "Applications — HireU" },
+    { "path": "/onboarding", "title": "Build your candidate profile — HireU" },
+    { "path": "/candidate", "title": "Candidate overview — HireU" },
+    {
+      "path": "/candidate/applications",
+      "title": "Candidate applications — HireU"
+    },
+    {
+      "path": "/candidate/assessments",
+      "title": "Candidate assessments — HireU"
+    },
+    { "path": "/candidate/calendar", "title": "Candidate calendar — HireU" },
+    { "path": "/candidate/documents", "title": "Candidate documents — HireU" },
+    {
+      "path": "/candidate/recommendations",
+      "title": "Candidate recommendations — HireU"
+    },
+    { "path": "/candidate/messages", "title": "Candidate messages — HireU" },
     { "path": "/candidate/profile", "title": "Candidate profile — HireU" },
+    { "path": "/candidate/privacy", "title": "Candidate privacy — HireU" },
     { "path": "/candidate/settings", "title": "Candidate settings — HireU" },
-    { "path": "/company", "title": "Company workspace — HireU" },
+    { "path": "/company", "title": "Company overview — HireU" },
     { "path": "/company/jobs/new", "title": "Post a job — HireU" },
-    { "path": "/company/candidates", "title": "Candidate review — HireU" },
+    { "path": "/company/candidates", "title": "Company candidates — HireU" },
     { "path": "/company/settings", "title": "Company settings — HireU" }
   ]
 }

@@ -2,15 +2,21 @@ import { Link, useLocation } from "wouter";
 import {
   Bell,
   BriefcaseBusiness,
+  CalendarDays,
   ChevronDown,
   Command,
+  FileText,
   LayoutDashboard,
   LogOut,
+  LockKeyhole,
   Menu,
+  MessageCircle,
   Moon,
+  Sparkles,
   Search,
   Settings,
   Sun,
+  Target,
   UserRound,
   X,
 } from "lucide-react";
@@ -58,7 +64,13 @@ export function PublicHeader() {
 const candidateLinks = [
   ["/candidate", "Overview", LayoutDashboard],
   ["/candidate/applications", "Applications", BriefcaseBusiness],
+  ["/candidate/assessments", "Assessments", Target],
+  ["/candidate/calendar", "Calendar", CalendarDays],
+  ["/candidate/documents", "Documents", FileText],
+  ["/candidate/recommendations", "Recommendations", Sparkles],
+  ["/candidate/messages", "Messages", MessageCircle],
   ["/candidate/profile", "My profile", UserRound],
+  ["/candidate/privacy", "Privacy & control", LockKeyhole],
   ["/candidate/settings", "Settings", Settings],
 ] as const;
 const companyLinks = [
