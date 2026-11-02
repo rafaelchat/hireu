@@ -49,3 +49,9 @@
 - O menu deve alternar entre “Logged out” com site público, “Candidate” com o workspace mock de Ana Martins e “Company” com o workspace mock da Nuvem Labs.
 - A troca deve navegar diretamente para a visão correspondente sem exigir autenticação real durante a fase de mock data.
 - O controle deve ser claramente identificado como ambiente mock para não ser confundido com autenticação de produção.
+
+## Idiomas
+
+- O site deve ter um seletor visível com bandeira para alternar entre English e Português (Brasil).
+- A escolha deve persistir no navegador e atualizar o idioma HTML da página.
+- Nesta primeira entrega, o seletor traduz a navegação global, cabeçalhos públicos, pricing, autenticação e chrome dos workspaces; a tradução detalhada dos textos operacionais seguirá por superfície.

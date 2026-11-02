@@ -5386,3 +5386,43 @@
     width: min(280px, calc(100vw - 24px));
   }
 }
+
+/* Language switcher */
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 31px;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.language-switcher:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.language-switcher span {
+  font-size: 15px;
+  line-height: 1;
+}
+.language-switcher strong {
+  font-size: 9px;
+  letter-spacing: 0.03em;
+}
+.app-top-actions .language-switcher {
+  min-width: 57px;
+  justify-content: center;
+}
+@media (max-width: 620px) {
+  .product-header-actions .language-switcher {
+    display: none;
+  }
+  .app-top-actions .language-switcher {
+    display: inline-flex;
+  }
+}

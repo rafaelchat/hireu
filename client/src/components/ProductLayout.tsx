@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { copy, useLanguage } from "@/contexts/LanguageContext";
 import { toast } from "sonner";
 
 export function Logo() {
@@ -36,15 +37,18 @@ export function Logo() {
 
 export function PublicHeader() {
   const { theme, toggleTheme } = useTheme();
+  const { language } = useLanguage();
+  const t = copy[language];
   return (
     <header className="product-public-header">
       <Logo />
       <nav>
-        <Link href="/jobs">Explore jobs</Link>
-        <Link href="/how-it-works">How it works</Link>
-        <Link href="/pricing">For companies</Link>
+        <Link href="/jobs">{t.exploreJobs}</Link>
+        <Link href="/how-it-works">{t.howItWorks}</Link>
+        <Link href="/pricing">{t.forCompanies}</Link>
       </nav>
       <div className="product-header-actions">
+        <LanguageSwitcher />
         <button
           className="product-icon-button"
           onClick={toggleTheme}
@@ -53,10 +57,10 @@ export function PublicHeader() {
           {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
         </button>
         <Link href="/auth" className="product-text-link">
-          Sign in
+          {t.signIn}
         </Link>
         <Link href="/auth?mode=company" className="product-dark-button">
-          Post a job <span>→</span>
+          {t.postJob} <span>→</span>
         </Link>
       </div>
     </header>
@@ -64,26 +68,45 @@ export function PublicHeader() {
 }
 
 const candidateLinks = [
-  ["/candidate", "Overview", LayoutDashboard],
-  ["/candidate/applications", "Applications", BriefcaseBusiness],
-  ["/candidate/assessments", "Assessments", Target],
-  ["/candidate/calendar", "Calendar", CalendarDays],
-  ["/candidate/documents", "Documents", FileText],
-  ["/candidate/recommendations", "Recommendations", Sparkles],
-  ["/candidate/messages", "Messages", MessageCircle],
-  ["/candidate/profile", "My profile", UserRound],
-  ["/candidate/privacy", "Privacy & control", LockKeyhole],
-  ["/candidate/settings", "Settings", Settings],
+  ["/candidate", "overview", LayoutDashboard],
+  ["/candidate/applications", "applications", BriefcaseBusiness],
+  ["/candidate/assessments", "assessments", Target],
+  ["/candidate/calendar", "calendar", CalendarDays],
+  ["/candidate/documents", "documents", FileText],
+  ["/candidate/recommendations", "recommendations", Sparkles],
+  ["/candidate/messages", "messages", MessageCircle],
+  ["/candidate/profile", "myProfile", UserRound],
+  ["/candidate/privacy", "privacy", LockKeyhole],
+  ["/candidate/settings", "settings", Settings],
 ] as const;
 const companyLinks = [
-  ["/company", "Overview", LayoutDashboard],
-  ["/company/candidates", "Discover talent", UserRound],
-  ["/company/interviews", "Interviews", CalendarDays],
-  ["/company/billing", "Credits & billing", CreditCard],
-  ["/company/automations", "Automations", Bot],
-  ["/company/jobs/new", "Post a job", BriefcaseBusiness],
-  ["/company/settings", "Company settings", Settings],
+  ["/company", "overview", LayoutDashboard],
+  ["/company/candidates", "discoverTalent", UserRound],
+  ["/company/interviews", "interviews", CalendarDays],
+  ["/company/billing", "creditsBilling", CreditCard],
+  ["/company/automations", "automations", Bot],
+  ["/company/jobs/new", "postJob", BriefcaseBusiness],
+  ["/company/settings", "companySettings", Settings],
 ] as const;
+
+export function LanguageSwitcher() {
+  const { language, toggleLanguage } = useLanguage();
+  return (
+    <button
+      className="language-switcher"
+      onClick={toggleLanguage}
+      aria-label={
+        language === "en"
+          ? "Mudar para português do Brasil"
+          : "Switch to English"
+      }
+      title={language === "en" ? "Português (Brasil)" : "English"}
+    >
+      <span aria-hidden="true">{language === "en" ? "🇺🇸" : "🇧🇷"}</span>
+      <strong>{language === "en" ? "EN" : "PT-BR"}</strong>
+    </button>
+  );
+}
 
 export function AppShell({
   kind,
@@ -95,9 +118,11 @@ export function AppShell({
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { language } = useLanguage();
+  const t = copy[language];
   const links = kind === "candidate" ? candidateLinks : companyLinks;
   const label =
-    kind === "candidate" ? "Candidate workspace" : "Company workspace";
+    kind === "candidate" ? t.candidateWorkspace : t.companyWorkspace;
   return (
     <div className="app-shell">
       <aside className={`app-sidebar ${open ? "open" : ""}`}>
@@ -132,7 +157,7 @@ export function AppShell({
               onClick={() => setOpen(false)}
             >
               <Icon size={17} />
-              {text}
+              {t[text as keyof typeof t]}
             </Link>
           ))}
         </nav>
@@ -140,7 +165,7 @@ export function AppShell({
           <button onClick={toggleTheme}>
             <span>
               {theme === "light" ? <Moon size={17} /> : <Sun size={17} />}
-              Appearance
+              {t.appearance}
             </span>
             <small>{theme === "light" ? "Light" : "Dark"}</small>
           </button>
@@ -149,7 +174,7 @@ export function AppShell({
           >
             <span>
               <LogOut size={17} />
-              Sign out
+              {t.signOut}
             </span>
           </button>
         </div>
@@ -167,9 +192,7 @@ export function AppShell({
             <Search size={16} />
             <input
               placeholder={
-                kind === "candidate"
-                  ? "Search saved jobs..."
-                  : "Search candidates..."
+                kind === "candidate" ? t.searchSavedJobs : t.searchCandidates
               }
             />
             <kbd>
@@ -177,6 +200,7 @@ export function AppShell({
             </kbd>
           </div>
           <div className="app-top-actions">
+            <LanguageSwitcher />
             <button className="product-icon-button">
               <Bell size={17} />
               <span className="notification-dot" />

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Route, Switch, useLocation, useRoute } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 import {
   ApplyPage,
   AuthPage,
@@ -58,6 +59,8 @@ type DemoIdentity = "logged-out" | "candidate" | "company";
 function AutoLoginSwitcher() {
   const [location, setLocation] = useLocation();
   const [open, setOpen] = useState(false);
+  const { language } = useLanguage();
+  const pt = language === "pt-BR";
   const active: DemoIdentity = location.startsWith("/candidate")
     ? "candidate"
     : location.startsWith("/company")
@@ -81,8 +84,8 @@ function AutoLoginSwitcher() {
       {open && (
         <div className="auto-login-menu" role="menu">
           <div className="auto-login-menu-heading">
-            <span>Auto login</span>
-            <small>Mock environment</small>
+            <span>{pt ? "Auto login" : "Auto login"}</span>
+            <small>{pt ? "Ambiente mock" : "Mock environment"}</small>
           </div>
           {(["logged-out", "candidate", "company"] as DemoIdentity[]).map(
             identity => (
@@ -100,13 +103,27 @@ function AutoLoginSwitcher() {
                       : "NL"}
                 </span>
                 <span>
-                  <strong>{labels[identity]}</strong>
+                  <strong>
+                    {pt && identity === "logged-out"
+                      ? "Deslogado"
+                      : pt && identity === "candidate"
+                        ? "Candidato"
+                        : pt && identity === "company"
+                          ? "Empresa"
+                          : labels[identity]}
+                  </strong>
                   <small>
                     {identity === "logged-out"
-                      ? "Public website"
+                      ? pt
+                        ? "Site público"
+                        : "Public website"
                       : identity === "candidate"
-                        ? "Ana Martins · candidate workspace"
-                        : "Nuvem Labs · company workspace"}
+                        ? pt
+                          ? "Ana Martins · área do candidato"
+                          : "Ana Martins · candidate workspace"
+                        : pt
+                          ? "Nuvem Labs · área da empresa"
+                          : "Nuvem Labs · company workspace"}
                   </small>
                 </span>
                 {active === identity && <Check size={14} />}
@@ -122,7 +139,7 @@ function AutoLoginSwitcher() {
         aria-label="Open auto login switcher"
       >
         <span className="auto-login-trigger-dot" />
-        <span>Auto login</span>
+        <span>{pt ? "Auto login" : "Auto login"}</span>
         <ChevronUp size={14} className={open ? "rotated" : ""} />
       </button>
     </div>
@@ -186,10 +203,12 @@ export default function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light" switchable>
-        <TooltipProvider>
-          <Toaster position="bottom-right" />
-          <Router />
-        </TooltipProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            <Toaster position="bottom-right" />
+            <Router />
+          </TooltipProvider>
+        </LanguageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

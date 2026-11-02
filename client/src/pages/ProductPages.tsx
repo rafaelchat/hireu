@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { toast } from "sonner";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   AppShell,
   MetricCard,
@@ -574,24 +575,39 @@ export function HowItWorksPage() {
 }
 
 export function PricingPage() {
+  const { language } = useLanguage();
+  const pt = language === "pt-BR";
   return (
     <div className="product-page">
       <PublicHeader />
       <div className="public-content">
         <PageHeader
-          eyebrow="For companies"
-          title="Pay for the conversation, not the contact."
-          copy="Explore anonymous profiles, invite the right people and let HireU handle the handoffs. Credits come back when a candidate does not respond or attend."
+          eyebrow={pt ? "Para empresas" : "For companies"}
+          title={
+            pt
+              ? "Pague pela conversa, não pelo contato."
+              : "Pay for the conversation, not the contact."
+          }
+          copy={
+            pt
+              ? "Explore perfis anônimos, convide as pessoas certas e deixe o HireU cuidar das etapas. Os créditos voltam quando o candidato não responde ou não comparece."
+              : "Explore anonymous profiles, invite the right people and let HireU handle the handoffs. Credits come back when a candidate does not respond or attend."
+          }
         />
         <div className="pricing-principles">
           <span>
-            <ShieldCheck size={15} /> Candidate identity stays protected
+            <ShieldCheck size={15} />{" "}
+            {pt ? "Identidade protegida" : "Candidate identity stays protected"}
           </span>
           <span>
-            <RefreshCw size={15} /> Outcome-based credit refunds
+            <RefreshCw size={15} />{" "}
+            {pt ? "Reembolso por resultado" : "Outcome-based credit refunds"}
           </span>
           <span>
-            <Bot size={15} /> Agents handle scheduling and reminders
+            <Bot size={15} />{" "}
+            {pt
+              ? "Agentes cuidam da agenda"
+              : "Agents handle scheduling and reminders"}
           </span>
         </div>
         <div className="pricing-grid">
@@ -675,10 +691,16 @@ export function PricingPage() {
                 }
               >
                 {plan.name === "Discovery"
-                  ? "Explore talent"
+                  ? pt
+                    ? "Explorar talentos"
+                    : "Explore talent"
                   : plan.name === "Custom"
-                    ? "Talk to HireU"
-                    : `Choose ${plan.name}`}
+                    ? pt
+                      ? "Falar com o HireU"
+                      : "Talk to HireU"
+                    : pt
+                      ? `Escolher ${plan.name}`
+                      : `Choose ${plan.name}`}
               </Link>
             </div>
           ))}
@@ -698,6 +720,8 @@ export function AuthPage() {
   const [mode, setMode] = useState<"candidate" | "company">(initialMode);
   const [email, setEmail] = useState("");
   const [, setLocation] = useLocation();
+  const { language } = useLanguage();
+  const pt = language === "pt-BR";
   return (
     <div className="auth-page">
       <div className="auth-brand">
@@ -713,24 +737,38 @@ export function AuthPage() {
             className={mode === "candidate" ? "active" : ""}
             onClick={() => setMode("candidate")}
           >
-            I am a candidate
+            {pt ? "Sou candidato" : "I am a candidate"}
           </button>
           <button
             className={mode === "company" ? "active" : ""}
             onClick={() => setMode("company")}
           >
-            I am hiring
+            {pt ? "Estou contratando" : "I am hiring"}
           </button>
         </div>
         <p className="page-eyebrow">
-          {mode === "candidate" ? "Candidate workspace" : "Company workspace"}
+          {mode === "candidate"
+            ? pt
+              ? "Área do candidato"
+              : "Candidate workspace"
+            : pt
+              ? "Área da empresa"
+              : "Company workspace"}
         </p>
         <h1>
           {mode === "candidate"
-            ? "Your next chapter starts here."
-            : "Build a hiring process people trust."}
+            ? pt
+              ? "Seu próximo capítulo começa aqui."
+              : "Your next chapter starts here."
+            : pt
+              ? "Construa um processo de contratação confiável."
+              : "Build a hiring process people trust."}
         </h1>
-        <p>Sign in with a magic link. No password to remember.</p>
+        <p>
+          {pt
+            ? "Entre com um magic link. Sem senha para lembrar."
+            : "Sign in with a magic link. No password to remember."}
+        </p>
         <form
           onSubmit={async e => {
             e.preventDefault();
@@ -742,22 +780,24 @@ export function AuthPage() {
           }}
         >
           <label>
-            Email address
+            {pt ? "Endereço de e-mail" : "Email address"}
             <input
               required
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder="you@company.com"
+              placeholder={pt ? "voce@empresa.com" : "you@company.com"}
             />
           </label>
           <button className="product-dark-button full" type="submit">
-            Send magic link <Mail size={16} />
+            {pt ? "Enviar magic link" : "Send magic link"} <Mail size={16} />
           </button>
         </form>
         <div className="auth-note">
-          <LockKeyhole size={14} /> Mock authentication is active for this
-          product review.
+          <LockKeyhole size={14} />{" "}
+          {pt
+            ? "A autenticação mock está ativa nesta revisão."
+            : "Mock authentication is active for this product review."}
         </div>
       </div>
     </div>
