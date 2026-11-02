@@ -25,3 +25,7 @@ Real Stripe checkout, production email delivery, ATS ingestion and AI scoring sh
 
 - Vercel Vite deployment and SPA rewrite guidance: https://vercel.com/docs/frameworks/frontend/vite
 - Supabase Vercel Marketplace integration, provisioning and environment variable sync: https://supabase.com/docs/guides/integrations/vercel-marketplace
+
+## Provisioned environment
+
+The Vercel project `bbod/hireu` is connected to `https://github.com/rafaelchat/hireu` and is live at https://hireu-psi.vercel.app. The separate Supabase project is `HireU` with reference `ypnbfvjtauphatdcqchr` in the São Paulo region. Its initial migration has been applied, and the public URL/key are configured in Vercel Development, Preview and Production environments.
